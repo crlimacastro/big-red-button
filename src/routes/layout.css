@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@config "./tailwind.config.ts";
+
+:root {
+	--hover-brightness: 1.05;
+	--active-brightness: 1.1;
+	--transition-duration: 0.1s;
+
+	--color-dark: 8, 15, 15;
+	--color-light: 164, 186, 183;
+	--color-primary: 164, 22, 35;
+	--color-secondary: 255, 192, 190;
+	--color-tertiary: 229, 169, 169;
+
+	/* "dark" by default */
+	--color-bg: var(--color-dark);
+	--color-text: var(--color-light);
+}
+
+[data-theme='light'] {
+	--color-bg: var(--color-light);
+	--color-text: var(--color-dark);
+}
+
+body {
+	background-color: rgb(var(--color-bg));
+	color: rgb(var(--color-text));
+}
+
+h1 {
+	font-weight: bold;
+}
+
+a {
+	color: rgb(var(--color-secondary));
+	transition: filter var(--transition-duration);
+}
+
+a:hover {
+	filter: brightness(var(--hover-brightness));
+}
+
+a:active {
+	filter: brightness(var(--active-brightness));
+}
+
+@layer components {
+  .btn {
+    @apply px-2 py-1 text-secondary border-2 border-tertiary rounded hover:brightness-105 active:brightness-110 transition-[filter];
+  }
+}
