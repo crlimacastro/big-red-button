@@ -5,7 +5,7 @@
 	import type { ClientToServerEvents, ServerToClientEvents } from '../../shared/events';
 
 	let goodBuzz: HTMLAudioElement;
-	let badBuzz : HTMLAudioElement;
+	let badBuzz: HTMLAudioElement;
 
 	const playerInRoomDataKey = 'savedPlayerRoomInfo';
 	function getPlayerInRoomData(): PlayerInRoomData {
@@ -31,6 +31,7 @@
 	// room
 	let inRoom = $state(null as PlayerInRoomData);
 	let isHost = $derived(inRoom?.room.hostName === inRoom?.player.name);
+	let canBuzz = $derived(inRoom?.room.buzzedClientName === null);
 
 	onMount(() => {
 		goodBuzz = new Audio('/good-buzz.mp3');
@@ -128,9 +129,22 @@
 			{:else}
 				<p>Waiting for a buzz...</p>
 			{/if}
+			{#if inRoom.room.players.length > 1}
+				<p>Other Players In Room:</p>
+				<ul>
+					{#each inRoom.room.players as { name }}
+						{#if name !== inRoom.player.name}
+							<li>{name}</li>
+						{/if}
+					{/each}
+				</ul>
+			{:else}
+				<p>No other players in this room.</p>
+			{/if}
 		{:else}
 			<button
-				class="aspect-square w-64 rounded-full bg-primary text-transparent drop-shadow-md drop-shadow-primary transition-all duration-75 select-none active:translate-y-1.5 active:scale-y-99 active:drop-shadow-sm"
+				class="aspect-square w-64 rounded-full bg-primary text-transparent drop-shadow-md drop-shadow-primary transition-all duration-75 select-none active:translate-y-1.5 active:scale-y-99 active:drop-shadow-sm disabled:brightness-75"
+				disabled={!canBuzz}
 				onclick={() => {
 					if (!inRoom) return;
 					socket.emit('clientReqBuzz', {
@@ -139,6 +153,13 @@
 					});
 				}}>buzz</button
 			>
+			{#if inRoom.room.buzzedClientName !== null}
+				{#if inRoom.room.buzzedClientName === inRoom.player.name}
+					<p>You buzzed in time!</p>
+				{:else}
+					<p>You did not buzz in time. Buzzed by: {inRoom.room.buzzedClientName}</p>
+				{/if}
+			{/if}
 		{/if}
 	</div>
 {:else}
