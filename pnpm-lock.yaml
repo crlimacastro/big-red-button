@@ -17,6 +17,9 @@ importers:
       socket.io-client:
         specifier: ^4.8.3
         version: 4.8.3
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
     devDependencies:
       '@eslint/compat':
         specifier: ^2.0.3

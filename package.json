@@ -4,10 +4,10 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "concurrently \"deno -A --watch ./server/index.ts\" \"vite dev\"",
+		"dev": "concurrently \"tsx watch ./server/index.ts\" \"vite dev\"",
 		"build": "vite build",
-		"preview": "deno -A ./server/index.ts",
-		"start": "deno -A ./server/index.ts",
+		"preview": "concurrently \"tsx ./server/index.ts\" \"vite preview\"",
+		"start": "tsx ./server/index.ts",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -51,6 +51,7 @@
 	"dependencies": {
 		"express": "^5.2.1",
 		"socket.io": "^4.8.3",
-		"socket.io-client": "^4.8.3"
+		"socket.io-client": "^4.8.3",
+		"tsx": "^4.21.0"
 	}
 }
