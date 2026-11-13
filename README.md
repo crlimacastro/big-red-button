@@ -1,22 +1,10 @@
-# sv
+# Big Red Button
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A small realtime socket application inspired by jackbox games.
 
-## Creating a project
+A host creates a room and invites people through a code. The guests have a big red button that they can press. The host will get on their screen who pressed the button first and can reset the room.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-pnpm dlx sv@0.13.0 create --template minimal --types ts --add tailwindcss="plugins:forms,typography" sveltekit-adapter="adapter:auto" drizzle="database:sqlite+sqlite:turso" prettier eslint --install pnpm big-red-button
-```
+This can be used in many ways. For trivia games for example to figure out who gets to answer the question first.
 
 ## Developing
 
