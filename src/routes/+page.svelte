@@ -166,7 +166,7 @@
 	<div
 		class="mx-auto flex h-screen w-[50%] min-w-72 flex-col items-center justify-center gap-8 text-2xl"
 	>
-		<h1 class="text-primary">Bubby Quiz</h1>
+		<h1 class="text-primary">Big Red Button</h1>
 		<div class="flex flex-col gap-4">
 			<label for="name">Write your name</label>
 			<input type="text" id="name" placeholder="Name" bind:value={playerNameInput} />

@@ -15,7 +15,7 @@ To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-pnpm dlx sv@0.13.0 create --template minimal --types ts --add tailwindcss="plugins:forms,typography" sveltekit-adapter="adapter:auto" drizzle="database:sqlite+sqlite:turso" prettier eslint --install pnpm bubby-quiz
+pnpm dlx sv@0.13.0 create --template minimal --types ts --add tailwindcss="plugins:forms,typography" sveltekit-adapter="adapter:auto" drizzle="database:sqlite+sqlite:turso" prettier eslint --install pnpm big-red-button
 ```
 
 ## Developing
